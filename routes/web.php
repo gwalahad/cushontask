@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\InvestmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/account', [AccountController::class, 'home'])->name('accountHome');
+Route::post('/invest', [InvestmentsController::class, 'invest']);
+Route::post('/investtransact', [InvestmentsController::class, 'investtransact']);
